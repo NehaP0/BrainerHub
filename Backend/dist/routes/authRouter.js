@@ -17,46 +17,52 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const user_1 = __importDefault(require("../models/user"));
 const router = express_1.default.Router();
+//new user registeration
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password } = req.body;
     try {
         //if user already exists
         const userExists = yield user_1.default.findOne({ username });
         if (userExists) {
-            return res.status(409).send('Username already exists');
+            return res.send({ "status": 0, "data": null, "message": 'Username already exists' });
         }
         else {
-            // create a new user
+            //hash the password and then store user credentials in database
             const hashedPassword = yield bcrypt_1.default.hash(password, 5);
             const newUser = yield user_1.default.create({ username, password: hashedPassword });
-            return res.status(201).send('User registered');
+            return res.send({ "status": 1, "data": null, "message": 'User registered' });
         }
     }
     catch (err) {
-        return res.status(500).send('Registration failed');
+        return res.send({ "status": 0, "data": null, "message": 'Registration failed' });
     }
 }));
+//existing user login functionality
 router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password } = req.body;
     try {
-        //if users username matches with the one that is there in the database
+        //check if user's username matches with the one that is there in the database
         const user = yield user_1.default.findOne({ username });
+        //if user does not exist in database send response invalid credentials
         if (!user) {
-            return res.status(401).send('Invalid Credentials');
+            return res.send({ "status": 0, "data": null, "message": 'Invalid Credentials' });
         }
         else {
+            //if user's username matches with the one that is there in the database, compare the passwords
             const matchPassword = yield bcrypt_1.default.compare(password, user.password);
+            //if passwords did not match send response invalid credentials
             if (!matchPassword) {
-                return res.status(401).send('Invalid credentials');
+                return res.send({ "status": 0, "data": null, "message": 'Invalid Credentials' });
             }
             else {
+                //if password matches too, generate a token which expires in 1 hour
                 const token = jsonwebtoken_1.default.sign({ userId: user.id }, 'brainerhub', { expiresIn: '1h' });
-                return res.status(200).send({ token });
+                return res.send({ "status": 1, "data": { token }, "message": 'Your token' });
             }
         }
     }
     catch (err) {
-        return res.status(500).send('Login failed');
+        return res.send({ "status": 0, "data": null, "message": 'Login failed' });
     }
 }));
 exports.default = router;

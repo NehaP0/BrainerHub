@@ -13,12 +13,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const Authenticator_1 = __importDefault(require("./middlewares/Authenticator"));
 const authRouter_1 = __importDefault(require("./routes/authRouter"));
+const productRouter_1 = __importDefault(require("./routes/productRouter"));
 const db_1 = __importDefault(require("./db"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 //Routes
-app.use('/app/auth', authRouter_1.default);
+app.use('/auth', authRouter_1.default);
+//middleware for token verification in case of accessing products route
+app.use(Authenticator_1.default);
+app.use('/products', productRouter_1.default);
 //Starting the server
 const port = process.env.PORT;
 app.listen(port, () => __awaiter(void 0, void 0, void 0, function* () {

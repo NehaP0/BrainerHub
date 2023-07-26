@@ -1,6 +1,9 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import auth  from "./middlewares/Authenticator"
 import authRouter from './routes/authRouter'
+import productRouter from './routes/productRouter'
+
 import connection from './db'
 
 
@@ -10,6 +13,11 @@ app.use(express.json());
 
 //Routes
 app.use('/auth', authRouter)
+
+//middleware for token verification in case of accessing products route
+app.use(auth);
+
+app.use('/products', productRouter)
 
 
 
