@@ -43,56 +43,6 @@ Replace `your_mongodb_connection_string` with the connection URL of your MongoDB
     cd frontend
     npm start
 
-## Directory Structure
-
-The project follows the following directory structure:
-
-BrainerHub/
-|- Backend/ (Backend code)
-   |- dist/
-   |- middlewares/
-      |- Authenticator.ts
-   |- models/
-      |- product.ts
-      |- user.ts
-   |- node_modules/
-   |- routes/
-      |- authRouter.ts
-      |- productRouter.ts
-   |- app.ts
-   |- db.ts
-   |- package.json
-   |- tsconfig.json
-
-|- frontend/ (Frontend code)
-   |- node_modules/
-   |- public/
-   |- src/
-      |- components/
-         |- Navbar.jsx
-      |- pages/
-         |- AddProductPage.jsx
-         |- AllRoutes.jsx
-         |- LoginPage.jsx
-         |- ProductPage.jsx
-         |- SignupPage.jsx
-      |- Redux/
-         |- AuthReducer/
-            |- action.js
-            |- actionTypes.js
-            |- reducer.js
-         |- ProductReducer/
-            |- action.js
-            |- actionTypes.js
-            |- reducer.js
-         |- store.js
-      |- App.js
-      |- index.js
-   |- package.json
-
-|- README.md
-
-
 
 ##Deployed Link:
 https://64c1f1d5d36fab434fdbc83c--lovely-frangollo-f3ca3e.netlify.app/
