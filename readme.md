@@ -10,7 +10,7 @@ BrainerHub is a full-stack web application that allows users to register, login,
 
 - Product Creation: Logged-in users can create new products with details such as name, price, description, quantity, and an image url.
 
-- Product Listing: Users can view a list of products available on the platform. The listing supports search, sort, and pagination.
+- Product Listing: Users can view a list of products available on the platform. The listing supports search and pagination.
 
 
 ## Prerequisites
