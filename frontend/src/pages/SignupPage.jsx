@@ -38,6 +38,8 @@ const SignupPage = () => {
     if (username && password) {
       dispatch(SignUpAction({ username, password }));
       setIsSuccessModalOpen(true);
+      setUsername("")
+      setPassword("")
     } else {
       setIsErrorModalOpen(true);
     }

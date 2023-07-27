@@ -38,7 +38,7 @@ export const getProductsAction = ({search, page, limit})=>(dispatch) => {
   .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(queryParams[key])}`)
   .join("&");
 
-  return axiosInstance.get(`http://127.0.0.1:5000/products/?${queryString}`)
+  return axiosInstance.get(`https://brainer-xecs.onrender.com/products/?${queryString}`)
     .then((res) => {dispatch({ type: GET_PRODUCTS_SUCCESS, payload: res.data })
       console.log(res.data);
     })
@@ -49,7 +49,7 @@ export const getProductsAction = ({search, page, limit})=>(dispatch) => {
 export const addProductAction = (productData) => (dispatch) => {
   dispatch({ type: REQUEST });
   return axiosInstance
-    .post("http://127.0.0.1:5000/products", productData)
+    .post("https://brainer-xecs.onrender.com/products", productData)
     .then(() => dispatch({ type: ADD_PRODUCT_SUCCESS }))
     .catch((err) => {dispatch({ type: FAILURE })
     console.log(err)
@@ -59,7 +59,7 @@ export const addProductAction = (productData) => (dispatch) => {
 // export const updateProductAction = (productId, productData) => (dispatch) => {
 //   dispatch({ type: REQUEST });
 //   return  axiosInstance
-//     .put(`http://127.0.0.1:5000/products/${productId}`, productData)
+//     .put(`https://brainer-xecs.onrender.com/products/${productId}`, productData)
 //     .then(() => dispatch({ type: UPDATE_PRODUCT_SUCCESS }))
 //     .catch(() => dispatch({ type: FAILURE }));
 // };

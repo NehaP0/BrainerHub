@@ -4,14 +4,14 @@ import { FAILURE,REQUEST,LOGIN_SUCCESS, SIGNUP_SUCCESS } from "./actionTypes";
 
 // Create a new Axios instance with default headers
 const axiosInstance = axios.create({
-    baseURL: "http://127.0.0.1:5000",
+    baseURL: "https://brainer-xecs.onrender.com",
     headers: {
       "Content-Type": "application/json",
     },
   });
 
 export const loginAction = (credentialsobj) => (dispatch) => {
-    console.log("Login request payload:", credentialsobj); // Add this line to check the payload being sent
+    console.log("Login request payload:", credentialsobj); //to check the payload being sent
 
     dispatch({ type: REQUEST });
 
@@ -25,7 +25,7 @@ export const loginAction = (credentialsobj) => (dispatch) => {
     return axiosInstance
         .post("/auth/login", credentialsobj, config)
         .then((res) => {  
-            console.log("Login response:", res.data); // Add this line to check the response from the backend
+            console.log("Login response:", res.data); //to check the response from the backend
 
             const token = res.data.data.token;  
             console.log("token is" + token);
@@ -48,7 +48,7 @@ export const loginAction = (credentialsobj) => (dispatch) => {
 export const SignUpAction = (credentialsobj) => (dispatch) => {
     dispatch({ type: REQUEST });
     return axios
-        .post("http://localhost:5000/auth/register", credentialsobj)
+        .post("https://brainer-xecs.onrender.com/auth/register", credentialsobj)
         .then((res) => dispatch({ type: SIGNUP_SUCCESS }))
         .catch((err) => {dispatch({ type: FAILURE })
         console.log(err);});
