@@ -3,12 +3,14 @@ import mongoose from 'mongoose'
 import auth  from "./middlewares/Authenticator"
 import authRouter from './routes/authRouter'
 import productRouter from './routes/productRouter'
+import cors from 'cors'
 
 import connection from './db'
 
 
 const app = express()
 app.use(express.json());
+app.use(cors())
 
 
 //Routes

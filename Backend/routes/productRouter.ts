@@ -56,6 +56,8 @@ router.post("/",async(req, res)=>{
 
 //searching, sorting and pagination
 router.get('/', async(req, res)=>{
+  // console.log('I am hit');
+  
     try{
         const{search, sort, page, limit} = req.query
 

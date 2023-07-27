@@ -9,7 +9,7 @@ interface DecodedToken {
 
 const auth = (req: Request, res: Response, next: NextFunction)=>{
     const token = req.headers.authorization
-
+  
     //if user does not provide token, send response Missing token. Access denied.
     if (!token) {
         return res.send({"status":0, "data":null, "message": "Missing token. Access denied." });

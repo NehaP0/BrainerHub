@@ -16,9 +16,11 @@ const express_1 = __importDefault(require("express"));
 const Authenticator_1 = __importDefault(require("./middlewares/Authenticator"));
 const authRouter_1 = __importDefault(require("./routes/authRouter"));
 const productRouter_1 = __importDefault(require("./routes/productRouter"));
+const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("./db"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 //Routes
 app.use('/auth', authRouter_1.default);
 //middleware for token verification in case of accessing products route
