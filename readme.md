@@ -52,7 +52,7 @@ Replace `your_mongodb_connection_string` with the connection URL of your MongoDB
 ## Acknowledgments
 
 - The full-stack application is built using the MERN stack (MongoDB, Express, React, and Node.js).
-- Chakra UI is used for the user interface, making it visually appealing and responsive.
+- Chakra UI is used for the user interface, making it visually appealing.
 
 
 
